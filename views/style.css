@@ -1,0 +1,38 @@
+div{
+	display: flex;
+}
+* {
+	box-sizing: border-box;
+}
+
+body{
+	font-family: 'PT Sans Narrow', sans-serif;
+	font-size: 16pt;
+	padding: 0;
+	margin: 0;
+}
+
+.naglowek{
+	justify-content: center;
+	margin: 2em;
+}
+
+.container{
+	flex-direction: row;
+	height:100vh;
+	width:100%;
+}
+
+.lewy{
+	flex-direction: column;
+	justify-content: center;
+	width: 50%;
+	background-color: red;
+}
+
+.prawy{
+	flex-direction: column;
+	justify-content: center
+	width:50%;
+	background-color:blue;
+}
