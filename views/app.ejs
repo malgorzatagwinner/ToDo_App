@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <title> Lista zadań do zrobienia </title>
+    <link href="style.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class = naglowek">
+	<h2> Lista zadań do zrobienia </h2>
+    </div>
+    <div class="container"> 
+     <div class = "lewa">
+      <h2> Do zrobienia </h2>
+        <ul>
+	  <form action="removetask" method="POST">
+            <% for( var i = 0; i < task.length; i++){ %>
+    	      <input type="checkbox" onChange="this.form.submit()" formaction="/removetask" name="check" value="<%= task[i] %>" /> <%= task[i] %>
+    <% } %>
+
+          </form>
+	</ul>
+        <form action ="/addtask" method="POST">
+          <input type="text" name="newtask" placeholder="Wpisz zadanie">
+          <button> Dodaj zadanie </button>
+        </form>  
+    </div>
+    <div class = "prawa">
+     <h2> Zrobione </h2>
+       <ul>
+	<% for(var i = 0; i < complete.length; i++){ %>
+ 	  <form action="/unchecktask" method="POST" style="display:inline;">
+	    <input type="hidden" name="check" value="<%= complete[i] %>">
+	    <input type="checkbox" checked onChange="this.form.submit()"><%= complete[i] %>
+	 </form>
+	<% } %>
+       </ul>
+ 	 <form action="/cleartask" method="GET">
+    	  <button type="submit"> Wyczyść listę </button>
+	 </form>
+     </div>
+   </div>
+  </body>
+</html>
