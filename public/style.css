@@ -1,6 +1,3 @@
-div{
-	display: flex;
-}
 * {
 	box-sizing: border-box;
 }
@@ -10,16 +7,37 @@ body{
 	font-size: 16pt;
 	padding: 0;
 	margin: 0;
+	height:100vh;
 }
 
+div{
+	display: flex;
+}
+
+form{
+	display: flex;
+	flex-direction: column;
+}
 .naglowek{
 	justify-content: center;
 	margin: 2em;
 }
 
+input{
+	justify-content: center;
+	width: 75%;
+	margin: 1em;
+	padding: 0.5em;
+}
+button{
+	width: 25%;
+	padding: 0.5em;
+}
+.srodek{
+	flex-direction: row;
+}
 .container{
 	flex-direction: row;
-	height:100vh;
 	width:100%;
 }
 
