@@ -1,38 +1,51 @@
 <html>
   <head>
+    <link rel = "stylesheet" href = https://cdn.jsdelivr.net/npm/pretty-checkbox@3.0/dist/pretty-checkbox.min.css">
+
+
     <title> Lista zadań do zrobienia </title>
     <link href="style.css" rel="stylesheet">
   </head>
   <body>
-    <div class = naglowek">
+    <div class = "naglowek">
 	<h2> Lista zadań do zrobienia </h2>
     </div>
     <div class="container"> 
      <div class = "lewy">
       <h2> Do zrobienia </h2>
-	<form action="removetask" method="POST">
+      <div class= "lista">
           <% for( var i = 0; i < task.length; i++){ %>
-    	    <div class = "srodek">
+	<form action="removetask" method="POST">
+	      <div = "srodek"> 
 	      <input type="checkbox" onChange="this.form.submit()" formaction="/removetask" name="check" value="<%= task[i] %>" /> <%= task[i] %>
-    <% } %>
-     	    </div>
+    		</div>
 	</form>
+		
+    <% } %>
+    </div>
         <form action ="/addtask" method="POST">
-          <input type="text" name="newtask" placeholder="Wpisz zadanie">
-          <button> Dodaj zadanie </button>
-        </form>
+	  <div = "dol">
+	    <input type="text" name="newtask" placeholder="Wpisz zadanie">
+	  <button> Dodaj zadanie </button>
+          </div>
+	</form>
      </div>
      <div class = "prawy">
      <h2> Zrobione </h2>
+     <div class = "lista">
 	<% for(var i = 0; i < complete.length; i++){ %>
-	   <form action="/unchecktask" method="POST" style="display:inline;">
-	    <input type="hidden" name="check" value="<%= complete[i] %>">
-	    <input type="checkbox" checked onChange="this.form.submit()"><%= complete[i] %>
-	 </form>
+	  <form action="/unchecktask" method="POST" style="display:inline;">
+	    <div = "srodek">
+	       <input type="checkbox" checked onChange="this.form.submit()"><input type="hidden" name="check" value="<%= complete[i] %>"><%= complete[i] %>
+	    </div>
+	  </form>
 	<% } %>
+	</div>
+	<div class = "dol">
  	 <form action="/cleartask" method="GET">
     	  <button type="submit"> Wyczyść listę </button>
 	 </form>
+	</div>
      </div>
    </div>
   </body>
