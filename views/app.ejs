@@ -16,15 +16,13 @@
       <div class= "lista">
           <% for( var i = 0; i < task.length; i++){ %>
 	<form action="removetask" method="POST">
-	      <div = "srodek"> 
-	      <input type="checkbox" onChange="this.form.submit()" formaction="/removetask" name="check" value="<%= task[i] %>" /> <%= task[i] %>
-    		</div>
+	      <input type="checkbox" onChange="this.form.submit()" formaction="/removetask" name="check" value="<%= task[i] %>"><%= task[i] %> 
 	</form>
 		
     <% } %>
     </div>
         <form action ="/addtask" method="POST">
-	  <div = "dol">
+	  <div = "srodek">
 	    <input type="text" name="newtask" placeholder="Wpisz zadanie">
 	  <button> Dodaj zadanie </button>
           </div>
@@ -32,20 +30,16 @@
      </div>
      <div class = "prawy">
      <h2> Zrobione </h2>
-     <div class = "lista">
+    <div = "lista"> 
 	<% for(var i = 0; i < complete.length; i++){ %>
-	  <form action="/unchecktask" method="POST" style="display:inline;">
-	    <div = "srodek">
-	       <input type="checkbox" checked onChange="this.form.submit()"><input type="hidden" name="check" value="<%= complete[i] %>"><%= complete[i] %>
-	    </div>
+	  <form action="/unchecktask" method="POST" style="display:inline;"> 
+	       <input type="checkbox" checked onChange="this.form.submit()">	       <input type="hidden" name="check" value="<%= complete[i] %>"><%= complete[i] %>
 	  </form>
 	<% } %>
-	</div>
-	<div class = "dol">
+	    </div>
  	 <form action="/cleartask" method="GET">
     	  <button type="submit"> Wyczyść listę </button>
 	 </form>
-	</div>
      </div>
    </div>
   </body>

@@ -3,54 +3,79 @@
 }
 
 body{
-	font-family: 'PT Sans Narrow', sans-serif;
+	font-family: FreeMono;
 	font-size: 16pt;
 	padding: 0;
 	margin: 0;
 	height:100vh;
 }
 
-div{
+div, form{
 	display: flex;
+}
+.lista form{
+	flex-direction: row;
+	width: 50%;
+	padding: 10px;
 }
 
-form{
-	display: flex;
-	flex-direction: column;
+h2{
+	display:flex;
+	justify-content: center;
 }
+
 .naglowek{
 	justify-content: center;
-	margin: 2em;
+	height: 100px;
 }
 
-input{
+input[type = "text"]{
 	justify-content: center;
-	width: 75%;
+	width: 60%;
 	margin: 1em;
 	padding: 0.5em;
 }
+
+input[type = "checkbox"]{
+	width: min-content;
+}
+
 button{
-	width: 25%;
+	width: fit-content;
 	padding: 0.5em;
 }
+
+.lista{
+	flex-direction: column;
+	flex-wrap: wrap;
+}
+
 .srodek{
-	flex-direction: row;
+	flex-direction: column;
+	flex-wrap: wrap;
+	width: 100%;
 }
 .container{
 	flex-direction: row;
 	width:100%;
+	height: calc(100% - 100px);
 }
 
 .lewy{
 	flex-direction: column;
-	justify-content: center;
+	justify-content: space-between;
 	width: 50%;
 	background-color: red;
 }
 
 .prawy{
 	flex-direction: column;
-	justify-content: center;
+	justify-content: space-between;
+	align-content: center;
 	width:50%;
 	background-color:blue;
+}
+
+.dol{
+	flex-direction: row;
 }
