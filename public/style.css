@@ -29,7 +29,7 @@ body{
 h2 {
 	text-align: left;
 	text-decoration: underline;
-	text-decoration-color: var(--fontcolor);
+	text-decoration-color: var(--accent);
 }
 
 .navbar{
