@@ -1,46 +1,57 @@
 <html>
   <head>
-    <link rel = "stylesheet" href = https://cdn.jsdelivr.net/npm/pretty-checkbox@3.0/dist/pretty-checkbox.min.css">
-
-
-    <title> Lista zadań do zrobienia </title>
-    <link href="style.css" rel="stylesheet">
-  </head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link href="style.css" rel="stylesheet">
+</head>
   <body>
-    <div class = "naglowek">
-	<h2> Lista zadań do zrobienia </h2>
-    </div>
-    <div class="container"> 
-     <div class = "lewy">
-      <h2> Do zrobienia </h2>
-      <div class= "lista">
-          <% for( var i = 0; i < task.length; i++){ %>
-	<form action="removetask" method="POST">
-	      <input type="checkbox" onChange="this.form.submit()" formaction="/removetask" name="check" value="<%= task[i] %>"><%= task[i] %> 
-	</form>
+     <nav class="navbar navbar-dark">
+	   	<span class = "navbar-brand">Lista do zrobienia</span>
+	   <form class="form-inline">
+	     <div class="custom-control custom-switch">
+           <input type="checkbox" class="custom-control-input" id="theme-switch">
+        <label class="custom-control-label" for="theme-switch">
+        	Light/Dark Mode
+        </label>
+         </div>
+       </form>
+    </nav>
+    
+  	<div class="container-fluid">
+	<div class = "row">
+	  <div class = "col-sm">
+            <h2> Zadania do zrobienia </h2>
+	      <div class="form-group form-check px-5">
+	         <% for( var i = 0; i < task.length; i++){ %>
+	            <form action="removetask" method="POST">
+                      <input type="checkbox" class ="form-check-input" onChange="this.form.submit()" formaction="/removetask" name="check" value="<%= task[i] %>"><%= task[i] %>
+	            </form>
 		
-    <% } %>
+                 <% } %>
     </div>
         <form action ="/addtask" method="POST">
-	  <div = "srodek">
+	
 	    <input type="text" name="newtask" placeholder="Wpisz zadanie">
-	  <button> Dodaj zadanie </button>
-          </div>
+             <button type="submit" class="btn btn-primary">Dodaj zadanie </button>
 	</form>
-     </div>
-     <div class = "prawy">
-     <h2> Zrobione </h2>
-    <div = "lista"> 
+	</div>
+	<div class="col-sm">
+	<h2> Zadania zrobione </h2>
+	<div class="px-5">
 	<% for(var i = 0; i < complete.length; i++){ %>
-	  <form action="/unchecktask" method="POST" style="display:inline;"> 
-	       <input type="checkbox" checked onChange="this.form.submit()">	       <input type="hidden" name="check" value="<%= complete[i] %>"><%= complete[i] %>
+		<form class="form-check" action="/unchecktask" method="POST"> 
+			<input type="hidden" name="check" value="<%= complete[i] %>" id="defaultcheck<%=i%>">
+			<input class ="form-check-input" type="checkbox" checked onChange="this.form.submit()">
+			<label class="form-check-label" for="defaultcheck<%=i%>"><%= complete[i] %></label>
 	  </form>
 	<% } %>
-	    </div>
+	</div>
  	 <form action="/cleartask" method="GET">
-    	  <button type="submit"> Wyczyść listę </button>
+    	  <button type="submit" class="btn btn-primary"> Wyczyść listę </button>
 	 </form>
-     </div>
-   </div>
+	 </div>
+	 </div>
+
+<script src="script.js"></script>
+	</div>
   </body>
 </html>
